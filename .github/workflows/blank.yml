@@ -1,0 +1,16 @@
+name: Testim CI Pipeline
+
+on: [push]
+
+jobs:
+  testim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Testim CLI
+        run: npm install -g @testim/testim-cli
+
+      - name: Run Testim Tests
+        run: testim --token ${{ secrets.TESTIM_TOKEN }} run
